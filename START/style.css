@@ -1,0 +1,119 @@
+/* Tipografi pakai link Google Fonts di HTML */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #ffffff, #9dd9ff);
+  font-family: "Myanmar Khyay", sans-serif;
+}
+
+.container {
+  text-align: center;
+  padding: 16px;
+}
+
+/* === Judul === */
+.title {
+  /* shrink-wrap ke konten terbesar, lalu center */
+  display: inline-grid;
+  width: fit-content;
+  margin: 0 auto;
+  line-height: 1.2;
+  color: #000;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.title-wrap {
+  position: relative;
+  display: inline-block; /* yang di-center & menentukan lebar baris atas */
+}
+
+.title-main {
+  display: inline-block; /* teks utama tanpa huruf S */
+}
+
+/* Huruf S dilepas dari flow supaya baris atas & bawah sejajar */
+.title .s {
+  position: absolute;
+  left: -1.2rem; /* geser S ke kiri (atur bila perlu) */
+  top: -0.25rem; /* naikkan dikit agar proporsional */
+  font-family: "Mea Culpa", cursive;
+  font-size: 5.5rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Baris bawah tetap center; sekarang lebarnya mengikuti kontainer .title */
+.title .subtext {
+  display: block;
+  margin-top: 0rem;
+  font-size: 3rem;
+  letter-spacing: 2.2rem;
+  font-family: "Myanmar Khyay", sans-serif;
+}
+
+.button {
+  background-color: #9dd9ff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 30px;
+  font-family: "Biryani", sans-serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+
+  /* tetap di tengah */
+  display: block;
+  margin: 20px auto 0;
+
+  /* animasi */
+  transition: opacity 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+.button:hover {
+  opacity: 0.8;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: scale(0.98); /* efek “klik” */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* >>> Gambar */
+.image-placeholder {
+  width: 600px;
+  max-width: 90vw;
+  height: 400px;
+  max-height: 60vh;
+  margin: 0 auto -40px; /* atur jarak gambar–judul di sini */
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  background-image: url("./Gambarnobackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: calc(50% - 20px) 50%; /* geser kiri */
+  background-color: transparent;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  .title .s {
+    left: -0.8rem;
+    font-size: 4rem;
+  }
+  .title .subtext {
+    font-size: 2rem;
+    letter-spacing: 1rem;
+  }
+  .image-placeholder {
+    background-position: calc(50% - 10px) 50%;
+  }
+}
