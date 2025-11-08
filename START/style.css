@@ -1,22 +1,24 @@
 /* Tipografi pakai link Google Fonts di HTML */
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh; /* UBAH: dari height ke min-height agar bisa scroll */
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, #ffffff, #9dd9ff);
   font-family: "Myanmar Khyay", sans-serif;
+  padding: 20px 0; /* TAMBAH: Beri sedikit padding atas/bawah */
+  box-sizing: border-box; /* TAMBAH: Agar padding tidak merusak layout */
 }
 
 .container {
   text-align: center;
   padding: 16px;
+  width: 100%; /* TAMBAH: Pastikan container responsif */
 }
 
 /* === Judul === */
 .title {
-  /* shrink-wrap ke konten terbesar, lalu center */
   display: inline-grid;
   width: fit-content;
   margin: 0 auto;
@@ -28,25 +30,23 @@ body {
 
 .title-wrap {
   position: relative;
-  display: inline-block; /* yang di-center & menentukan lebar baris atas */
+  display: inline-block; 
 }
 
 .title-main {
-  display: inline-block; /* teks utama tanpa huruf S */
+  display: inline-block; 
 }
 
-/* Huruf S dilepas dari flow supaya baris atas & bawah sejajar */
 .title .s {
   position: absolute;
-  left: -1.2rem; /* geser S ke kiri (atur bila perlu) */
-  top: -0.25rem; /* naikkan dikit agar proporsional */
+  left: -1.2rem; 
+  top: -0.25rem; 
   font-family: "Mea Culpa", cursive;
   font-size: 5.5rem;
   line-height: 1;
   pointer-events: none;
 }
 
-/* Baris bawah tetap center; sekarang lebarnya mengikuti kontainer .title */
 .title .subtext {
   display: block;
   margin-top: 0rem;
@@ -63,12 +63,8 @@ body {
   font-family: "Biryani", sans-serif;
   font-size: 1.1rem;
   cursor: pointer;
-
-  /* tetap di tengah */
   display: block;
   margin: 20px auto 0;
-
-  /* animasi */
   transition: opacity 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
 }
 
@@ -78,7 +74,7 @@ body {
 }
 
 .button:active {
-  transform: scale(0.98); /* efek “klik” */
+  transform: scale(0.98); 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
@@ -88,19 +84,19 @@ body {
   max-width: 90vw;
   height: 400px;
   max-height: 60vh;
-  margin: 0 auto -40px; /* atur jarak gambar–judul di sini */
+  margin: 0 auto -40px; /* Jarak gambar–judul di desktop */
   border-radius: 20px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, height 0.3s ease, margin 0.3s ease;
 
   background-image: url("./Gambarnobackground.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: calc(50% - 20px) 50%; /* geser kiri */
+  background-position: calc(50% - 20px) 50%; 
   background-color: transparent;
 }
 
-/* Responsif */
+/* Responsif (KODE LAMA DIPERBAIKI) */
 @media (max-width: 600px) {
   .title {
     font-size: 2.2rem;
@@ -111,9 +107,20 @@ body {
   }
   .title .subtext {
     font-size: 2rem;
-    letter-spacing: 1rem;
+    letter-spacing: 0.5rem; /* UBAH: Dikecilkan drastis dari 1rem */
   }
+
   .image-placeholder {
+    /* UBAH: Kecilkan tinggi gambar & ubah margin negatif jadi positif */
+    height: 250px; 
+    max-height: 40vh;
+    margin: 0 auto 15px; /* DARI -40px JADI 15px */
     background-position: calc(50% - 10px) 50%;
+  }
+
+  .button {
+    font-size: 1rem; /* Kecilkan tombol sedikit */
+    padding: 10px 25px;
+    margin-top: 30px; /* Beri jarak lebih dari judul */
   }
 }
